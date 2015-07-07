@@ -11,12 +11,11 @@ import cc.carlos.application.exception.BaseAppException;
  * Created by zhangheilong on 15/5/28.
  */
 public class BaseApplication extends Application {
-    //用来存储数据
+    //to save object data
     private HashMap<String, Object> hash;
-    //单例
+    //single
     public static BaseApplication _instance;
-    //用来发送应用内的广播，比使用全局广播效率更高
-    //在自己的应用中注册接收器的时候，也必须使用这个广播管理器注册
+
     private LocalBroadcastManager localBroadcastManager;
 
     @Override
@@ -26,10 +25,10 @@ public class BaseApplication extends Application {
     }
 
     /**
-     * 此方法的目的是为了在界面跳转的时候，保存数据对象
+     * to save object data during fragment exchange
      *
-     * @param key    要保存的object的key，建议使用 object.class.getName()作为key
-     * @param object 要保存的对象
+     * @param key    the key of object data,suggest to use object.class.getName()
+     * @param object the object to save
      */
     public void saveObject(String key, Object object) {
         if (hash == null) {
@@ -39,25 +38,25 @@ public class BaseApplication extends Application {
     }
 
     /**
-     * @param key 要获取的对象的key
-     * @return 返回要获取的对象，如果对象不存大，就抛出异常
+     * @param key the key of object which you are trying to get
+     * @return the object to return,if it's not exist,return exception
      */
     public Object getObject(String key) {
         if (hash == null) {
             hash = new HashMap<>();
-            throw new BaseAppException("你要获取的对象不存在");
+            throw new BaseAppException("the object doesn't exist");
         }
         if (hash.containsKey(key)) {
             return hash.get(key);
         } else {
-            throw new BaseAppException("你要获取的对象不存在");
+            throw new BaseAppException("the object doesn't exist");
         }
     }
 
     /**
-     * 删除没有用的对象，一般对象取出以后，就应该删除
+     * remove object from hashmap
      *
-     * @param key 要删除的对象的key
+     * @param key the key of object which you are trying to remove
      */
     public void removeObject(String key) {
         if (hash == null) {
@@ -71,9 +70,9 @@ public class BaseApplication extends Application {
     }
 
     /**
-     * 用来获取发送广播的发布器
+     * to get a BroadcastManager
      *
-     * @return 一个广播的发布器
+     * @return a BroadcastManager
      */
     public LocalBroadcastManager getLocalBroadcastManager() {
         if (localBroadcastManager == null) {
