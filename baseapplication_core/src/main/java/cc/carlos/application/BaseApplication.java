@@ -16,6 +16,7 @@ public class BaseApplication extends Application {
     //单例
     public static BaseApplication _instance;
     //用来发送应用内的广播，比使用全局广播效率更高
+    //在自己的应用中注册接收器的时候，也必须使用这个广播管理器注册
     private LocalBroadcastManager localBroadcastManager;
 
     @Override
