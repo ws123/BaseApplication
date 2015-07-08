@@ -37,6 +37,10 @@ public class BaseApplication extends Application {
         hash.put(key, object);
     }
 
+    public BaseApplication get_instance() {
+        return _instance;
+    }
+
     /**
      * @param key the key of object which you are trying to get
      * @return the object to return,if it's not exist,return exception
