@@ -14,6 +14,10 @@ public class HttpRequestModel implements Parcelable {
     private String url;
     private String broadcaseKey;
 
+    public HttpRequestModel() {
+
+    }
+
 
     public Request_type getRequest_type() {
         return request_type;
@@ -50,10 +54,8 @@ public class HttpRequestModel implements Parcelable {
 
     public enum Request_type {
         JSON(1), UPLOAD(2);
-        // 定义私有变量
         private int nCode;
 
-        // 构造函数，枚举类型只能为私有
         Request_type(int _nCode) {
             this.nCode = _nCode;
         }
